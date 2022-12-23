@@ -1,0 +1,18 @@
+{
+  "name": "kwaadpepper/chronopost-tracking",
+  "description": "Package generated from https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl using wsdltophp/packagegenerator",
+  "license": "MIT",
+  "homepage": "https://github.com/Kwaadpepper/chronopost-tracking",
+  "require": {
+    "php": ">=7.4",
+    "ext-dom": "*",
+    "ext-mbstring": "*",
+    "ext-soap": "*",
+    "wsdltophp/packagebase": "~5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "./src/"
+    }
+  }
+}

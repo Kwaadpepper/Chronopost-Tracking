@@ -19,16 +19,16 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 $options = [
     WsdlToPhp\PackageBase\AbstractSoapClientBase::WSDL_URL => 'https://ws.chronopost.fr/tracking-cxf/TrackingServiceWS?wsdl',
-    WsdlToPhp\PackageBase\AbstractSoapClientBase::WSDL_CLASSMAP => ClassMap::get(),
+    WsdlToPhp\PackageBase\AbstractSoapClientBase::WSDL_CLASSMAP => \ChronopostTracking\ClassMap::get(),
 ];
 /**
  * Samples for Cancel ServiceType
  */
-$cancel = new \ServiceType\Cancel($options);
+$cancel = new \ChronopostTracking\ServiceType\Cancel($options);
 /**
  * Sample call for cancelListSkybill operation/method
  */
-if ($cancel->cancelListSkybill(new \StructType\CancelListSkybill()) !== false) {
+if ($cancel->cancelListSkybill(new \ChronopostTracking\StructType\CancelListSkybill()) !== false) {
     print_r($cancel->getResult());
 } else {
     print_r($cancel->getLastError());
@@ -36,7 +36,7 @@ if ($cancel->cancelListSkybill(new \StructType\CancelListSkybill()) !== false) {
 /**
  * Sample call for cancelSkybill operation/method
  */
-if ($cancel->cancelSkybill(new \StructType\CancelSkybill()) !== false) {
+if ($cancel->cancelSkybill(new \ChronopostTracking\StructType\CancelSkybill()) !== false) {
     print_r($cancel->getResult());
 } else {
     print_r($cancel->getLastError());
@@ -44,11 +44,11 @@ if ($cancel->cancelSkybill(new \StructType\CancelSkybill()) !== false) {
 /**
  * Samples for Track ServiceType
  */
-$track = new \ServiceType\Track($options);
+$track = new \ChronopostTracking\ServiceType\Track($options);
 /**
  * Sample call for trackESD operation/method
  */
-if ($track->trackESD(new \StructType\TrackESD()) !== false) {
+if ($track->trackESD(new \ChronopostTracking\StructType\TrackESD()) !== false) {
     print_r($track->getResult());
 } else {
     print_r($track->getLastError());
@@ -56,7 +56,7 @@ if ($track->trackESD(new \StructType\TrackESD()) !== false) {
 /**
  * Sample call for trackSearch operation/method
  */
-if ($track->trackSearch(new \StructType\TrackSearch()) !== false) {
+if ($track->trackSearch(new \ChronopostTracking\StructType\TrackSearch()) !== false) {
     print_r($track->getResult());
 } else {
     print_r($track->getLastError());
@@ -64,7 +64,7 @@ if ($track->trackSearch(new \StructType\TrackSearch()) !== false) {
 /**
  * Sample call for trackWithSenderRef operation/method
  */
-if ($track->trackWithSenderRef(new \StructType\TrackWithSenderRef()) !== false) {
+if ($track->trackWithSenderRef(new \ChronopostTracking\StructType\TrackWithSenderRef()) !== false) {
     print_r($track->getResult());
 } else {
     print_r($track->getLastError());
@@ -72,7 +72,7 @@ if ($track->trackWithSenderRef(new \StructType\TrackWithSenderRef()) !== false) 
 /**
  * Sample call for trackSkybillV2 operation/method
  */
-if ($track->trackSkybillV2(new \StructType\TrackSkybillV2()) !== false) {
+if ($track->trackSkybillV2(new \ChronopostTracking\StructType\TrackSkybillV2()) !== false) {
     print_r($track->getResult());
 } else {
     print_r($track->getLastError());
@@ -80,7 +80,7 @@ if ($track->trackSkybillV2(new \StructType\TrackSkybillV2()) !== false) {
 /**
  * Sample call for trackSkybill operation/method
  */
-if ($track->trackSkybill(new \StructType\TrackSkybill()) !== false) {
+if ($track->trackSkybill(new \ChronopostTracking\StructType\TrackSkybill()) !== false) {
     print_r($track->getResult());
 } else {
     print_r($track->getLastError());
@@ -88,11 +88,11 @@ if ($track->trackSkybill(new \StructType\TrackSkybill()) !== false) {
 /**
  * Samples for Search ServiceType
  */
-$search = new \ServiceType\Search($options);
+$search = new \ChronopostTracking\ServiceType\Search($options);
 /**
  * Sample call for searchPOD operation/method
  */
-if ($search->searchPOD(new \StructType\SearchPOD()) !== false) {
+if ($search->searchPOD(new \ChronopostTracking\StructType\SearchPOD()) !== false) {
     print_r($search->getResult());
 } else {
     print_r($search->getLastError());
@@ -100,7 +100,7 @@ if ($search->searchPOD(new \StructType\SearchPOD()) !== false) {
 /**
  * Sample call for searchPODWithSenderRef operation/method
  */
-if ($search->searchPODWithSenderRef(new \StructType\SearchPODWithSenderRef()) !== false) {
+if ($search->searchPODWithSenderRef(new \ChronopostTracking\StructType\SearchPODWithSenderRef()) !== false) {
     print_r($search->getResult());
 } else {
     print_r($search->getLastError());

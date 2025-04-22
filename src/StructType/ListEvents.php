@@ -11,8 +11,16 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for listEvents StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ListEvents extends AbstractStructBase
 {
+    /**
+     * The skybillNumber
+     * Meta information extracted from the WSDL
+     * - minOccurs: 0
+     * @var string|null
+     */
+    protected ?string $skybillNumber = null;
     /**
      * The events
      * Meta information extracted from the WSDL
@@ -23,24 +31,40 @@ class ListEvents extends AbstractStructBase
      */
     protected ?array $events = null;
     /**
-     * The skybillNumber
-     * Meta information extracted from the WSDL
-     * - minOccurs: 0
-     * @var string|null
-     */
-    protected ?string $skybillNumber = null;
-    /**
      * Constructor method for listEvents
-     * @uses ListEvents::setEvents()
      * @uses ListEvents::setSkybillNumber()
-     * @param \StructType\Event[] $events
+     * @uses ListEvents::setEvents()
      * @param string $skybillNumber
+     * @param \StructType\Event[] $events
      */
-    public function __construct(?array $events = null, ?string $skybillNumber = null)
+    public function __construct(?string $skybillNumber = null, ?array $events = null)
     {
         $this
-            ->setEvents($events)
-            ->setSkybillNumber($skybillNumber);
+            ->setSkybillNumber($skybillNumber)
+            ->setEvents($events);
+    }
+    /**
+     * Get skybillNumber value
+     * @return string|null
+     */
+    public function getSkybillNumber(): ?string
+    {
+        return $this->skybillNumber;
+    }
+    /**
+     * Set skybillNumber value
+     * @param string $skybillNumber
+     * @return \StructType\ListEvents
+     */
+    public function setSkybillNumber(?string $skybillNumber = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($skybillNumber) && !is_string($skybillNumber)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($skybillNumber, true), gettype($skybillNumber)), __LINE__);
+        }
+        $this->skybillNumber = $skybillNumber;
+        
+        return $this;
     }
     /**
      * Get events value
@@ -51,15 +75,16 @@ class ListEvents extends AbstractStructBase
      */
     public function getEvents(): ?array
     {
-        return isset($this->events) ? $this->events : null;
+        return $this->events ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setEvents method
+     * This method is responsible for validating the value(s) passed to the setEvents method
      * This method is willingly generated in order to preserve the one-line inline validation within the setEvents method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateEventsForArrayConstraintsFromSetEvents(?array $values = []): string
+    public static function validateEventsForArrayConstraintFromSetEvents(?array $values = []): string
     {
         if (!is_array($values)) {
             return '';
@@ -90,7 +115,7 @@ class ListEvents extends AbstractStructBase
     public function setEvents(?array $events = null): self
     {
         // validation for constraint: array
-        if ('' !== ($eventsArrayErrorMessage = self::validateEventsForArrayConstraintsFromSetEvents($events))) {
+        if ('' !== ($eventsArrayErrorMessage = self::validateEventsForArrayConstraintFromSetEvents($events))) {
             throw new InvalidArgumentException($eventsArrayErrorMessage, __LINE__);
         }
         if (is_null($events) || (is_array($events) && empty($events))) {
@@ -114,29 +139,6 @@ class ListEvents extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The events property can only contain items of type \StructType\Event, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->events[] = $item;
-        
-        return $this;
-    }
-    /**
-     * Get skybillNumber value
-     * @return string|null
-     */
-    public function getSkybillNumber(): ?string
-    {
-        return $this->skybillNumber;
-    }
-    /**
-     * Set skybillNumber value
-     * @param string $skybillNumber
-     * @return \StructType\ListEvents
-     */
-    public function setSkybillNumber(?string $skybillNumber = null): self
-    {
-        // validation for constraint: string
-        if (!is_null($skybillNumber) && !is_string($skybillNumber)) {
-            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($skybillNumber, true), gettype($skybillNumber)), __LINE__);
-        }
-        $this->skybillNumber = $skybillNumber;
         
         return $this;
     }

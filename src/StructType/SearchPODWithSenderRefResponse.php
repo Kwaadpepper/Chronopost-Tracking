@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: tns:searchPODWithSenderRefResponse
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchPODWithSenderRefResponse extends AbstractStructBase
 {
     /**

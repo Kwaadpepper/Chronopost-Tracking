@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for resultTrackWithSenderRef StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ResultTrackWithSenderRef extends AbstractStructBase
 {
     /**
@@ -105,15 +106,16 @@ class ResultTrackWithSenderRef extends AbstractStructBase
      */
     public function getListParcel(): ?array
     {
-        return isset($this->listParcel) ? $this->listParcel : null;
+        return $this->listParcel ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setListParcel method
+     * This method is responsible for validating the value(s) passed to the setListParcel method
      * This method is willingly generated in order to preserve the one-line inline validation within the setListParcel method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateListParcelForArrayConstraintsFromSetListParcel(?array $values = []): string
+    public static function validateListParcelForArrayConstraintFromSetListParcel(?array $values = []): string
     {
         if (!is_array($values)) {
             return '';
@@ -144,7 +146,7 @@ class ResultTrackWithSenderRef extends AbstractStructBase
     public function setListParcel(?array $listParcel = null): self
     {
         // validation for constraint: array
-        if ('' !== ($listParcelArrayErrorMessage = self::validateListParcelForArrayConstraintsFromSetListParcel($listParcel))) {
+        if ('' !== ($listParcelArrayErrorMessage = self::validateListParcelForArrayConstraintFromSetListParcel($listParcel))) {
             throw new InvalidArgumentException($listParcelArrayErrorMessage, __LINE__);
         }
         if (is_null($listParcel) || (is_array($listParcel) && empty($listParcel))) {

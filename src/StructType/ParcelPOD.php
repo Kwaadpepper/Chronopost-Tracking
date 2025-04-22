@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for parcelPOD StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ParcelPOD extends AbstractStructBase
 {
     /**

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: tns:trackSkybillV2Response
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TrackSkybillV2Response extends AbstractStructBase
 {
     /**

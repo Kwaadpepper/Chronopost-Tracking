@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: tns:trackESDResponse
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TrackESDResponse extends AbstractStructBase
 {
     /**

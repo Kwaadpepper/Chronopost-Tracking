@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for resultTrackSkybillV2 StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ResultTrackSkybillV2 extends AbstractStructBase
 {
     /**

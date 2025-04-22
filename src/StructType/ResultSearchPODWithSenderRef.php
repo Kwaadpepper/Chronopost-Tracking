@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for resultSearchPODWithSenderRef StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ResultSearchPODWithSenderRef extends AbstractStructBase
 {
     /**
@@ -105,15 +106,16 @@ class ResultSearchPODWithSenderRef extends AbstractStructBase
      */
     public function getListParcelPOD(): ?array
     {
-        return isset($this->listParcelPOD) ? $this->listParcelPOD : null;
+        return $this->listParcelPOD ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setListParcelPOD method
+     * This method is responsible for validating the value(s) passed to the setListParcelPOD method
      * This method is willingly generated in order to preserve the one-line inline validation within the setListParcelPOD method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateListParcelPODForArrayConstraintsFromSetListParcelPOD(?array $values = []): string
+    public static function validateListParcelPODForArrayConstraintFromSetListParcelPOD(?array $values = []): string
     {
         if (!is_array($values)) {
             return '';
@@ -144,7 +146,7 @@ class ResultSearchPODWithSenderRef extends AbstractStructBase
     public function setListParcelPOD(?array $listParcelPOD = null): self
     {
         // validation for constraint: array
-        if ('' !== ($listParcelPODArrayErrorMessage = self::validateListParcelPODForArrayConstraintsFromSetListParcelPOD($listParcelPOD))) {
+        if ('' !== ($listParcelPODArrayErrorMessage = self::validateListParcelPODForArrayConstraintFromSetListParcelPOD($listParcelPOD))) {
             throw new InvalidArgumentException($listParcelPODArrayErrorMessage, __LINE__);
         }
         if (is_null($listParcelPOD) || (is_array($listParcelPOD) && empty($listParcelPOD))) {

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: tns:trackWithSenderRefResponse
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class TrackWithSenderRefResponse extends AbstractStructBase
 {
     /**

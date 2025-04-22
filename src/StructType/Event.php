@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for event StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Event extends AbstractStructBase
 {
     /**

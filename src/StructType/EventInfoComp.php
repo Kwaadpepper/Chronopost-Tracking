@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for eventInfoComp StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class EventInfoComp extends Event
 {
     /**
@@ -41,15 +42,16 @@ class EventInfoComp extends Event
      */
     public function getInfoCompList(): ?array
     {
-        return isset($this->infoCompList) ? $this->infoCompList : null;
+        return $this->infoCompList ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setInfoCompList method
+     * This method is responsible for validating the value(s) passed to the setInfoCompList method
      * This method is willingly generated in order to preserve the one-line inline validation within the setInfoCompList method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateInfoCompListForArrayConstraintsFromSetInfoCompList(?array $values = []): string
+    public static function validateInfoCompListForArrayConstraintFromSetInfoCompList(?array $values = []): string
     {
         if (!is_array($values)) {
             return '';
@@ -80,7 +82,7 @@ class EventInfoComp extends Event
     public function setInfoCompList(?array $infoCompList = null): self
     {
         // validation for constraint: array
-        if ('' !== ($infoCompListArrayErrorMessage = self::validateInfoCompListForArrayConstraintsFromSetInfoCompList($infoCompList))) {
+        if ('' !== ($infoCompListArrayErrorMessage = self::validateInfoCompListForArrayConstraintFromSetInfoCompList($infoCompList))) {
             throw new InvalidArgumentException($infoCompListArrayErrorMessage, __LINE__);
         }
         if (is_null($infoCompList) || (is_array($infoCompList) && empty($infoCompList))) {

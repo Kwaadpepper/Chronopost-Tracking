@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for resultListCancelSkybill StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ResultListCancelSkybill extends AbstractStructBase
 {
     /**
@@ -26,6 +27,11 @@ class ResultListCancelSkybill extends AbstractStructBase
      */
     protected ?string $errorMessage = null;
     /**
+     * The statusCode
+     * @var int|null
+     */
+    protected ?int $statusCode = null;
+    /**
      * The skybills
      * Meta information extracted from the WSDL
      * - maxOccurs: unbounded
@@ -35,28 +41,23 @@ class ResultListCancelSkybill extends AbstractStructBase
      */
     protected ?array $skybills = null;
     /**
-     * The statusCode
-     * @var int|null
-     */
-    protected ?int $statusCode = null;
-    /**
      * Constructor method for resultListCancelSkybill
      * @uses ResultListCancelSkybill::setErrorCode()
      * @uses ResultListCancelSkybill::setErrorMessage()
-     * @uses ResultListCancelSkybill::setSkybills()
      * @uses ResultListCancelSkybill::setStatusCode()
+     * @uses ResultListCancelSkybill::setSkybills()
      * @param int $errorCode
      * @param string $errorMessage
-     * @param string[] $skybills
      * @param int $statusCode
+     * @param string[] $skybills
      */
-    public function __construct(?int $errorCode = null, ?string $errorMessage = null, ?array $skybills = null, ?int $statusCode = null)
+    public function __construct(?int $errorCode = null, ?string $errorMessage = null, ?int $statusCode = null, ?array $skybills = null)
     {
         $this
             ->setErrorCode($errorCode)
             ->setErrorMessage($errorMessage)
-            ->setSkybills($skybills)
-            ->setStatusCode($statusCode);
+            ->setStatusCode($statusCode)
+            ->setSkybills($skybills);
     }
     /**
      * Get errorCode value
@@ -105,6 +106,29 @@ class ResultListCancelSkybill extends AbstractStructBase
         return $this;
     }
     /**
+     * Get statusCode value
+     * @return int|null
+     */
+    public function getStatusCode(): ?int
+    {
+        return $this->statusCode;
+    }
+    /**
+     * Set statusCode value
+     * @param int $statusCode
+     * @return \StructType\ResultListCancelSkybill
+     */
+    public function setStatusCode(?int $statusCode = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($statusCode) && !(is_int($statusCode) || ctype_digit($statusCode))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($statusCode, true), gettype($statusCode)), __LINE__);
+        }
+        $this->statusCode = $statusCode;
+        
+        return $this;
+    }
+    /**
      * Get skybills value
      * An additional test has been added (isset) before returning the property value as
      * this property may have been unset before, due to the fact that this property is
@@ -113,15 +137,16 @@ class ResultListCancelSkybill extends AbstractStructBase
      */
     public function getSkybills(): ?array
     {
-        return isset($this->skybills) ? $this->skybills : null;
+        return $this->skybills ?? null;
     }
     /**
-     * This method is responsible for validating the values passed to the setSkybills method
+     * This method is responsible for validating the value(s) passed to the setSkybills method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSkybills method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSkybillsForArrayConstraintsFromSetSkybills(?array $values = []): string
+    public static function validateSkybillsForArrayConstraintFromSetSkybills(?array $values = []): string
     {
         if (!is_array($values)) {
             return '';
@@ -152,7 +177,7 @@ class ResultListCancelSkybill extends AbstractStructBase
     public function setSkybills(?array $skybills = null): self
     {
         // validation for constraint: array
-        if ('' !== ($skybillsArrayErrorMessage = self::validateSkybillsForArrayConstraintsFromSetSkybills($skybills))) {
+        if ('' !== ($skybillsArrayErrorMessage = self::validateSkybillsForArrayConstraintFromSetSkybills($skybills))) {
             throw new InvalidArgumentException($skybillsArrayErrorMessage, __LINE__);
         }
         if (is_null($skybills) || (is_array($skybills) && empty($skybills))) {
@@ -176,29 +201,6 @@ class ResultListCancelSkybill extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('The skybills property can only contain items of type string, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->skybills[] = $item;
-        
-        return $this;
-    }
-    /**
-     * Get statusCode value
-     * @return int|null
-     */
-    public function getStatusCode(): ?int
-    {
-        return $this->statusCode;
-    }
-    /**
-     * Set statusCode value
-     * @param int $statusCode
-     * @return \StructType\ResultListCancelSkybill
-     */
-    public function setStatusCode(?int $statusCode = null): self
-    {
-        // validation for constraint: int
-        if (!is_null($statusCode) && !(is_int($statusCode) || ctype_digit($statusCode))) {
-            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($statusCode, true), gettype($statusCode)), __LINE__);
-        }
-        $this->statusCode = $statusCode;
         
         return $this;
     }

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: tns:cancelListSkybill
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CancelListSkybill extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for infosPOD StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class InfosPOD extends AbstractStructBase
 {
     /**
